@@ -3,7 +3,6 @@ const http = require('http')
 const https = require('https')
 const fetch = require('node-fetch');
 const app = express()
-const port = 3001
 
 app.get('/get_memes', (req, res) => {
     fetch("https://api.imgflip.com/get_memes")
@@ -21,4 +20,7 @@ app.get("/get_meme/:id", (req, res) => {
 //app.listen(port, () => {
 //    console.log(`Example app listening at http://localhost:${port}`)
 //})
-http.createServer(app).listen(80);
+const port = process.env.PORT || 3001;
+app.listen(port, () => {
+    console.log('Express server listening on port', port)
+});
